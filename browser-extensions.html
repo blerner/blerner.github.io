@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <!--#include file="ssi/head.ssi"-->
+  </head>
+
+  <body>
+    <!--#set var="page" value="academic"-->
+    <!--#set var="subpage" value="research"-->
+    <!--#include file="ssi/body.ssi"-->      
+    <h2>Conflicts of Interest: Interactions among Browser Extensions</h2>
+
+    <h3>Papers and Downloads</h3>
+    <ul>
+      <li><a href="papers/dls2012_overlays.html">Detecting Conflicts
+	  Among Declarative UI Extensions</a>, DLS 2012</li>
+      <li><a href="papers/webapps2012.html">Modeling and
+          Reasoning about DOM Events</a>, WebApps 2012</li>
+      <li><a href="papers/thesis.html">Designing for
+          Extensibility and Planning for Conflict: Experiments in
+          Web-Browser Design</a>, Ph.D. dissertation, July 2011</li>
+      <li><a href="papers/webapps2011.html">C3: An
+          Experimental, Extensible, Reconfigurable Platform
+          for HTML-based Applications</a>, WebApps 2011</li>
+      <li><a href="papers/affiliates2010.html">Weaving Code
+          Extensions into JavaScript</a>, Industrial Affiliates Days, 2010</li>
+      <li><a href="papers/oopsla2010.html">Supporting Dynamic, Third-Party Code Customizations in JavaScript Using Aspects</a>, OOPSLA 2010</li>
+      <li><a href="papers/aplwaca2010.html">Language Support for Extensible Web Browsers</a>, APLWACA 2010</li>
+      <li><a href="papers/affiliates2009.html">Full Disclosure: Advice for
+          Web Extensions</a>, Industrial Affiliates Days, 2009</li>
+      <li><a href="papers/generals.html">Conflicts of Interest: Approaches to Extensible System Design</a>, generals exam, April 2009</li>
+    </ul>
+    <h3>Motivation</h3>
+    <p>
+      Many systems are <i>extensible</i>: they offer users a
+      way to expand the capabilities of the program beyond
+      those built in.  Some extensibility is limited in scope:
+      for example, media players allow the installation of new
+      codecs, but do not typically allow new extensions to,
+      say, add support for internet radio if some rudimentary
+      support did not already exist.  Other systems are
+      nothing but extensions: the emacs text editor and the
+      Eclipse development environment are composed of
+      (comparatively) small kernels and suites of packages
+      that make the kernels useful.  There is a price for this
+      flexibility, though.  The greater the power of
+      extensions, the more likely independent extensions are
+      incompatible with each other.
+    </p>
+    <p>
+      Designing a system for extensibility involves several
+      coordinated decisions, such as the scope of extension,
+      what hooks or extension points are visible, what
+      interactions between extensions are possible, etc.
+      Choosing poorly on any of these axes can cripple the
+      extension system's popularity or usefulness.  Choosing a
+      poor programming model for the extension points may make
+      debugging extensions very difficult, precisely when they
+      break and debugging is needed.
+    </p>
+    <p>
+      The Firefox web browser is built on a very widely
+      extensible platform.  Extensions can hook practically
+      anything, at any time, leading to a very flexible,
+      powerful model.  Moreover, extensions are easy to program,
+      involving nothing fundamentally harder than programming a
+      web page.  This has led to wildly surging popularity, with
+      over <i>10 thousand</i> extensions downloaded over <i>2
+        billion</i> times by over <i>100 million</i> users.  But
+      when these extensions conflict with each other, diagnosing
+      the problem is particularly difficult.  Firefox is
+      therefore an ideal testbed for extension conflict: it is
+      highly visible, very powerful, and improving it would
+      directly help millions of users.
+    </p>
+    <h3>Approach</h3>
+    <p>An extension is a self-contained piece of code that
+      inserts itself in various places in the browser in order
+      to implement its feature.  In other words, it is very much
+      like <i>aspect-oriented</i> coding, which similarly weaves
+      advice code into a mainline program.  The fundamental
+      difference here is that extensions are always written by
+      people other than the browser developers, whereas
+      typically aspects are written by the mainline authors.
+      Our first effort, therefore, has been to add aspects to
+      Javascript, so that we can rewrite extensions more
+      declaratively, to state explicitly what they're hooking in
+      the browser.  This work has been done in Spur, a Microsoft
+      Research JScript compiler.</p>
+    <p>Additional work is under way to explore other forms of
+      extension hooks, such as how overlays inject new content
+      into HTML, and characterize the kinds of conflicts those
+      hooks entail.  Knowing this, we can begin to develop
+      static analyses that detect weaving violations or other
+      semantic problems, and thereby detect when extensions
+      conflict.</p>
+    <!--#include file="ssi/footer.ssi"-->
+    </div>
+  </body>
+</html>

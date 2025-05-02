@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+<!--#include file="ssi/head.ssi"-->
+  </head>
+
+  <body>
+    <!--#set var="page" value="academic"-->
+    <!--#set var="subpage" value="research"-->
+    <!--#include file="ssi/body.ssi"-->
+    <h2>Pure-Causal Atomicity</h2>
+    <p class="authorsLine">Benjamin Lerner and Dan Grossman</p>
+    
+    <h3>Papers and Downloads</h3> 
+    <ul>
+      <li><a
+             href="papers/purecausal_2008.html">Purifying Causal Atomicity</a>, (in submission, January 2008)</li>
+
+      <li><a
+             href="papers/purecausal_tr2008.html">Purifying Causal Atomicity (companion technical report)</a>,
+        2008</li>
+
+      <li>Prototype implementation (available soon)</li>
+    </ul>
+    <h3>Overview</h3>
+
+    <p>Static analysis of lock-based shared-memory
+      multithreaded programs is a valuable tool for finding
+      programming errors or verifying their absence. An
+      important recent trend is toward analyzing higher-level
+      concurrency properties. In particular, instead of
+      detecting data races (e.g., a write to a thread-shared
+      variable not protected by a lock), we can verify that an
+      entire code block is atomic: it appears to happen either
+      all-at-once or not-at-all to any other thread. Atomicity
+      is a common requirement for code blocks, and the absence
+      of data races is neither necessary nor sufficient for
+      atomicity.</p>
+
+    <p>Atomicity checking takes a multithreaded program
+      <code>P</code> with certain code sections annotated that
+      they should be atomic, which we write <code>atomic { s
+        }</code>, and verifies that <code>s</code> uses mechanisms such as
+      locks correctly to achieve atomicity. Prior work on static
+      analysis for atomicity checking has used either
+      type-and-effect systems or model-checking
+      techniques. Reachability queries over Petri nets, which
+      our work uses, represent a recent effort in the latter
+      style.</p>
+
+    <h3>Motivation</h3>
+    
+    <p>The type-system approach uses syntax-directed rules to
+      assign each program statement an atomicity based on
+      Lipton&apos;s theory of movers.  Though efficient, elegant, and
+      relatively easy to prove correct, type systems are
+      susceptible to false positives (overapproximations)
+      resulting from (1) the syntactic structure of the code,
+      and (2) the thread-modular assumption that any other code
+      in the program might run in parallel with any atomic
+      section. Modelchecking approaches can improve precision by
+      modeling the whole program and tracking inter-thread
+      dependencies through locking operations. Using Petri nets
+      to model programs is particularly convenient because data-
+      and control-dependencies are modeled directly and
+      atomicity checking can be formulated as a query over the
+      net's state-space that existing tools can process.</p>
+
+    <h3>Approach</h3> 
+
+    <p>This work extends and adapts prior Petri-net work to
+      support purity annotations, which previously have been
+      investigated only via type systems. A pure block,
+      <code>pure { s }</code>, must either do no writes or
+      terminate &quot;abnormally&quot; by executing a break
+      statement. We show how to construct a purity analysis in
+      Petri nets, and integrate its results with the overall
+      atomicity analysis.</p>
+    <!--#include file="ssi/footer.ssi"-->
+    </div>
+  </body>
+</html>

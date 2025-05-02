@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <!--#include file="ssi/head.ssi"-->
+  </head>
+
+  <body>
+    <!--#set var="page" value="academic"-->
+    <!--#set var="subpage" value="research"-->
+    <!--#include file="ssi/body.ssi"-->      
+    <h2>Semantics for the Web</h2>
+
+    <h3>Papers and Downloads</h3>
+    <ul>
+      <li><a href="papers/dls2012_s5.html">A Tested Semantics for
+	  Getters, Setters and Eval in JavaScript</a>, DLS 2012</li>
+      <li><a href="papers/webapps2012.html">Modeling and
+          Reasoning about DOM Events</a>, WebApps 2012</li>
+    </ul>
+    <h3>Motivation</h3>
+    <p>
+      Client-side web programs take advantage of ...
+    </p>
+    <h3>Approach</h3>
+    <p>An extension is a self-contained piece of code that
+      inserts itself in various places in the browser in order
+      to implement its feature.  In other words, it is very much
+      like <i>aspect-oriented</i> coding, which similarly weaves
+      advice code into a mainline program.  The fundamental
+      difference here is that extensions are always written by
+      people other than the browser developers, whereas
+      typically aspects are written by the mainline authors.
+      Our first effort, therefore, has been to add aspects to
+      Javascript, so that we can rewrite extensions more
+      declaratively, to state explicitly what they're hooking in
+      the browser.  This work has been done in Spur, a Microsoft
+      Research JScript compiler.</p>
+    <p>Additional work is under way to explore other forms of
+      extension hooks, such as how overlays inject new content
+      into HTML, and characterize the kinds of conflicts those
+      hooks entail.  Knowing this, we can begin to develop
+      static analyses that detect weaving violations or other
+      semantic problems, and thereby detect when extensions
+      conflict.</p>
+    <!--#include file="ssi/footer.ssi"-->
+    </div>
+  </body>
+</html>

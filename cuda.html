@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+<!--#include file="ssi/head.ssi"-->
+  </head>
+  
+  <body>
+    <!--#set var="page" value="academic"-->
+    <!--#set var="subpage" value="research"-->
+    <!--#include file="ssi/body.ssi"-->
+    <h2>Non-Uniform Parallelism on a GPGPU</h2>
+    <p class="authorsLine">Benjamin Lerner, Trevor Jim and
+      Yitzhak Mandelbaum</p>
+
+    <h3>Downloads</h3> 
+    <ul>
+      <li><a href="files/njpls.pdf">Experiences
+          coding Non-Uniform Parallelism using the CUDA GPGPU
+          Architecture</a>, (presented at
+        <a href="http://domino.research.ibm.com/comm/research_projects.nsf/pages/plday.plday2008.html"
+           title="NJPLS 2008">NJPLS</a>, August 2008)</li>
+    </ul>
+    <h3>Overview</h3>
+
+    <p>It is well known that certain kinds of tasks are better
+      suited for parallel architectures than others.  Heavily
+      imperative, sequential code does not parallelize well at
+      all, while data-parellel code runs exceptionally well.
+      The gray area in between, of non-uniform parallelism, is
+      more difficult to map onto parallel architectures.</p>
+
+    <p>Recent years have seen an increasing interest in the
+      use of <i>General Purpose GPU</i> computation, where
+      graphics cards are being used as coprocessors to speed up
+      many kinds of software problems.  In this work, we
+      examined how well non-uniform parallel problems fit onto
+      a GPU architecture, and specifically focused
+      on <i>parsing</i>, a well-studied problem with known
+      opportunities for parallelism.  The goal was to see how
+      much of a speedup was provided by the GPGPU, and how
+      difficult it was to achive that improvement.</p>
+
+    <p>Over the course of a ten-week intership at AT&amp;T
+      Reseach, I implemented the
+      <a href="http://en.wikipedia.org/wiki/Earley_algorithm"
+         title="Earley parsing algorithm">Earley parsing
+        algorithm</a> with several different optimizations for the
+      GPGPU.  Ultimately, we failed to achieve any speedup (by
+      the end of the summer, we had reached amortized parity
+      with the simple CPU algorithm), but in so doing we learned
+      several programming idioms and difficulties with the GPGPU
+      style of coding.</p>
+    <!--#include file="ssi/footer.ssi"-->
+    </div>
+  </body>
+</html>

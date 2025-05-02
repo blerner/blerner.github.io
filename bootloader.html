@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+<!--#include file="ssi/head.ssi"-->
+  </head>
+  <body>
+<!--#set var="page" value="personal"-->
+<!--#set var="subpage" value="useful"-->
+<!--#set var="subsubpage" value="bootloader"-->
+<!--#include file="ssi/body.ssi"-->
+          <p>
+	    I have a feeling the following scenario is more common
+            than you might guess, and certainly is more frustrating
+            than it ought to be.  I had a Windows laptop, to which I
+            wanted to add a Linux partition.  There are plenty of
+            guides available online; some of the best are
+            <a href="http://apcmag.com/how_to_dual_boot_linux_and_windows_xp_linux_installed_first.htm">here
+            (Linux installed first)</a>
+            and <a href="http://apcmag.com/how_to_dual_boot_windows_xp_and_linux_xp_installed_first.htm">here
+            (Windows installed first)</a>.  However, at least one
+            piece of backup software assumes that the Windows
+            bootloader, NTLDR, is used as the primary bootloader.  So
+            I needed to boot Windows from NTLDR, and Linux from
+            GRUB...but in installing Linux I had wiped NTLDR and
+            replaced it with GRUB.  This how-to guides you through
+            restoring NTLDR as the primary bootloader, with GRUB
+            chained onto it.  Evidently the Vista bootloader is less
+            ugly than this hack, but here's how it goes:
+	  </p>
+          <ol>
+            <li>You have a computer where:
+              <ul>
+                <li>There are two primary partitions (a Dell
+                  recovery partition and a Windows partition)</li>
+
+                <li>There's an extended partition containing at
+                  least two logical partitions (Linux + its swap
+                  partition) as the first logical partitions.</li>
+
+                <li>GRUB was installed in the MBR of the disk, and
+                  overwrote NTLDR MBR.</li>
+
+                <li><code>C:\NTLDR</code> exists, and is the Windows
+                  bootloader</li>
+
+                <li>You don't have a Windows installation disk, or
+                  you don't have an administrator password to
+                  Windows, and hence can't use the Recovery
+                  Console.</li>
+              </ul>
+
+              You want a computer where GRUB is installed in the
+              boot record of the Linux partition, NTLDR is installed
+              in the MBR of the disk, and chains to GRUB.
+            </li>
+            <li> Boot into Linux.  Run <code>sudo grub</code>.  Within grub, run
+              <ul>
+                <li><code>find /boot/grub/stage1</code> &lt;== This will
+                  tell you something like <code>(hd0,4)</code>, which is the
+                  drive and partition number for Linux</li>
+
+                <li><code>root (hd0,4)</code> &lt;== use the same results
+                  as the previous step</li>
+
+                <li><code>setup (hd0,4)</code> &lt;== Do NOT use setup
+                  (hd0), as that overwrites the disk's MBR.  Using
+                  the partition number installs it into the
+                  partition instead</li>
+
+                <li>quit</li>
+              </ul>
+            </li>
+
+            <li>Mount a drive that can be read by Windows.  (In my
+              case, I've mounted the Windows partition itself as
+              <code>/windows/c/</code>.)</li>
+
+
+            <li>Run <code>sudo dd if=/dev/sda5
+                of=/windows/c/grub.mbr bs=512
+                count=1</code>. Here, <code>sda5</code> is the
+              partition that Linux is installed in, the output
+              file is in the root directory of the Windows
+              partition, and the remaining arguments pull out the
+              first 512 bytes, i.e. the bootloader, of this
+              partition.</li>
+
+            <li>Reboot into Windows.  Run <code>attrib -r -h -s
+                c:\boot.ini</code> to remove its protections.  Edit
+              boot.ini to include the
+              line <code>C:\grub.mbr=&quot;Ubuntu
+                Linux&quot;</code>.  This is the main hack: it will
+              cause NTLDR to load the specified file as a
+              bootloader...and conveniently we've stashed GRUB
+              into that file.  It will be configured to look for
+              the right menu.lst file in the Linux partition,
+              because it was setup properly in step 2.  Restore
+              boot.ini's privileges with <code>attrib +r +h +s
+                c:\boot.ini</code>.</li>
+
+            <li>At this point, if you reboot, GRUB is still the
+              bootloader.  Presumably, you've placed a Windows boot
+              entry in <code>menu.lst</code> before, which will
+              cause the Windows partition's NTLDR to run...and now
+              boot.ini contains a line that launches the faked GRUB
+              in
+              <code>C:\...</code> which has a
+              menu entry to boot Windows, which launches NTLDR...
+              So you have a cycle in the loaders, which is mildly
+              amusing...</li>
+
+            <li>Download mbrfix.exe from
+              <a href="http://www.sysint.no/en/Download.aspx">http://www.sysint.no/en/Download.aspx</a>, with
+              description at
+              <a href="http://www.sysint.no/nedlasting/mbrfix.htm">http://www.sysint.no/nedlasting/mbrfix.htm</a>.
+              Run
+              <code>mbrfix.exe /drive 0 fixmbr</code> from a cmd.exe shell.
+              This overwrites the MBR with the Windows MBR and
+              points it to use <code>C:\boot.ini</code>.</li>
+
+            <li>At this point, if you reboot, NTLDR is now the
+              bootloader.  It will use boot.ini that will have a
+              Windows entry and the new Ubuntu entry, which in turn
+              launches GRUB (from <code>C:\grub.mbr</code>), which
+              can still launch Windows' NTLDR...  If everything
+              works correctly, both OSes should be bootable from
+              their respective bootloaders.</li>
+
+            <li>Protect grub.mbr by <code>attrib +r +h +s
+                c:\grub.mbr</code></li>
+
+            <li>Reboot into Linux, and remove Windows' entry from
+              menu.lst.</li>
+          </ol>
+<!--#include file="ssi/footer.ssi"-->
+    </div>
+  </body>
+</html>

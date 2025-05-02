@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+<!--#include file="ssi/head.ssi"-->
+    <meta name="keywords" content="SEMINAL" />
+  </head>
+
+  <body>
+    <!--#set var="page" value="academic"-->
+    <!--#set var="subpage" value="research"-->
+    <!--#include file="ssi/body.ssi"-->
+    <h2 class="waspAcronym"><b>SEMINAL</b>: <b>S</b>earching
+      for <b>E</b>rror <b>M</b>essages <b>in</b> <b>A</b>dvanced
+      <b>L</b>anguages</h2>
+    <p class="authorsLine">Benjamin Lerner, Dan Grossman, and
+      Craig Chambers</p>
+    
+    <h3>Papers and Downloads</h3> 
+    <ul>
+      <li><a
+             href="papers/seminal_pldi2007.html">Searching
+          for Type-Error Messages</a>, PLDI 2007</li>
+
+      <li><a
+             href="papers/seminal_ml2006.html">SEMINAL:
+          Searching for ML Type-Error Messages</a>, ML Workshop
+        2006</li>
+
+      <li><a
+             href="papers/seminal_prototype.html">Prototype implementation</a></li>
+    </ul>
+    <h3>Overview</h3>
+
+    <p><span class="waspAcronym">Seminal</span> is a
+      new approach to providing useful type-error messages
+      during compilation, while simultaneously making compilers
+      simpler, more reliable, and faster.  The key idea is to
+      use a simple and robust type-checker as an oracle for an
+      error-message finder that uses search to find a good error
+      message in the form of a "similar" code skeleton that
+      would type-check.</p>
+    
+    <h3>Motivation</h3>
+    
+    <p>Modern programming languages have complex type systems,
+      complex implementations, and complex rules for type
+      inference and/or implicit type instantiation of "generic"
+      functions.  Algorithms for inferring types are often
+      simple, elegant, and fast in practice <i>for well-typed
+        programs</i>, but the simple algorithms do not produce
+      good error messages.  So what typically happens is an
+      elegant compiler implementation gets muddied with extra
+      state, flags, special cases, and strings in an attempt to
+      produce marginally better error messages.  This process,
+      which we have seen first-hand in the Cyclone compiler and
+      confirmed anecdotally with many other researchers, leads
+      to compilers that are buggier, tougher to write, much
+      tougher to maintain, and slower.</p>
+    
+    <h3>Approach</h3>
+
+    <p>We maintain the simple elegance of a type-checker that
+      makes little attempt to produce good error messages by not
+      using it <i>directly</i> to produce error messages.
+      Similarly, we do not construct a complicated type-checker
+      just to produce error messages.  Instead, the
+      error-message producer is a <i>search procedure</i> that
+      uses the simple type-checker as an oracle to determine if
+      programs type-check. The goal of the search is to find a
+      program skeleton very much like the ill-typed program
+      except the skeleton would type-check.  For example, a
+      message might say "<code>f(e1,e2,e3)</code> does not
+      typecheck but <code>f(e1,_,e3)</code> does if you replace
+      <code>_</code> with an expression of type
+      <code>t</code>." Of course, there are many such skeletons
+      that we then rank, suggesting the "best" ones first.</p>
+    
+    <h3>Advantages</h3>
+
+    <p>The key insight is that we can reuse an elegant
+      type-checker for error messages with essentially no change
+      to the type-checker's implementation.  A search procedure
+      may be too slow for compiling a large program, but we use
+      search only for ill-typed code.  As such, it is reasonable
+      to act "at human speed" -- searching for one or two
+      seconds is reasonable.  Furthermore, the search is over
+      program expressions, which are often simpler than program
+      types, and does not require a detailed understanding of
+      the type system.  Finally, the error messages should be
+      better than they were before.  In short, we believe
+      Seminal represents an easier implementation approach that
+      produces better results, a true "win-win."</p>
+    <!--#include file="ssi/footer.ssi"-->
+  </div>
+  </body>
+</html>

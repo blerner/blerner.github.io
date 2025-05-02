@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+<!--#include file="ssi/head.ssi"-->
+    <style type="text/css">
+    <!--
+      .codesnippet {
+        color: #000000;
+        background-color: #f8f8f8;
+        overflow: auto;
+        border-style: groove;
+      }
+      .comment {
+        /* font-lock-comment-face */
+        color: #cd7054;
+      }
+      .comment-delimiter {
+        /* font-lock-comment-delimiter-face */
+        color: #cd7054;
+      }
+      .constant {
+        /* font-lock-constant-face */
+        color: #4682b4;
+        font-weight: bold;
+      }
+      .doc {
+        /* font-lock-doc-face */
+        color: #8b2323;
+      }
+      .function-name {
+        /* font-lock-function-name-face */
+        color: #8b3a3a;
+      }
+      .keyword {
+        /* font-lock-keyword-face */
+        color: #4682b4;
+      }
+      .string {
+        /* font-lock-string-face */
+        color: #8b2323;
+      }
+
+      a {
+        color: inherit;
+        background-color: inherit;
+        font: inherit;
+        text-decoration: inherit;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    -->
+    </style>
+  </head>
+
+  <body>
+<!--#set var="page" value="personal"-->
+<!--#set var="subpage" value="useful"-->
+<!--#set var="subsubpage" value="latex"-->
+<!--#include file="ssi/body.ssi"-->      
+          <p>The following functions use Windows' <a
+              href="http://msdn.microsoft.com/en-us/library/ms648774.aspx"><acronym
+                title="Dynamic Data Exchange">DDE</acronym></a>
+            messaging protocol to control Adobe Acrobat Reader.
+            Additionally, they define an extra expansion pattern for
+            calling Acrobat with the full, quoted pathname of the PDF
+            file.
+          </p>
+          <p>
+            The DDE functions work <i>much</i> more effectively when
+            Acrobat has been opened by emacs, rather than being a
+            pre-existing process.  The code currently does no checking
+            for whether Acrobat is used by emacs; that would be a
+            useful robustness check.
+          </p>
+    <pre class="codesnippet">
+<span class="comment-delimiter">;; </span><span class="comment">LaTeX
+</span>(load <span class="string">"auctex.el"</span> nil t t)
+(<span class="keyword">require</span> '<span class="constant">reftex</span>)
+(<span class="keyword">defun</span> <span class="function-name">acrobat-close-file</span> (file) <span class="doc">"Close file in Acrobat"</span>
+  (<span class="keyword">save-excursion</span>
+    (set-buffer (get-buffer-create <span class="string">" *ddeclient*"</span>))
+    (erase-buffer)
+    (insert <span class="string">"[DocOpen(\""</span> file <span class="string">"\")]\n"</span> )
+    (insert <span class="string">"[DocClose(\""</span> file <span class="string">"\")]\n"</span> )
+    (call-process-region (point-min) (point-max)
+                         <span class="string">"ddeclient"</span> t t nil <span class="string">"acroview"</span> <span class="string">"control"</span>)
+    (<span class="keyword">if</span> (= 0 (string-to-int (buffer-string))) t nil)))
+(<span class="keyword">defun</span> <span class="function-name">acrobat-open-file</span> (file) <span class="doc">"Open file in Acrobat"</span>
+  (<span class="keyword">save-excursion</span>
+    (set-buffer (get-buffer-create <span class="string">" *ddeclient*"</span>))
+    (erase-buffer)
+    (insert <span class="string">"[DocOpen(\""</span> file <span class="string">"\")]\n"</span> )
+    (insert <span class="string">"[FileOpen(\""</span> file <span class="string">"\")]\n"</span> )
+    (call-process-region (point-min) (point-max)
+                         <span class="string">"ddeclient"</span> t t nil <span class="string">"acroview"</span> <span class="string">"control"</span>)
+    (<span class="keyword">if</span> (= 0 (string-to-int (buffer-string))) t nil)))
+(<span class="keyword">defadvice</span> <span class="function-name">TeX-run-TeX</span> (before cleanup-acrobat (name command file))
+  <span class="doc">"Wrapped version that closes pdfs first"</span>
+  (<span class="keyword">let*</span> ((fullfile (expand-file-name (concat file <span class="string">".pdf"</span>) 
+                                     (TeX-master-directory)))
+         (filestats (file-attributes fullfile))
+         (filesize (nth 7 filestats)))
+    (<span class="keyword">if</span> (and (file-exists-p fullfile)
+             (&gt; filesize 0)) <span class="comment-delimiter">; </span><span class="comment">simple case for degenerate files 
+</span>                             <span class="comment-delimiter">; </span><span class="comment">that cause Adobe to be upset
+</span>        (<span class="keyword">progn</span>
+          (acrobat-close-file fullfile)
+          (raise-frame (car (car (cdr (current-frame-configuration)))))))
+    )
+  )
+(add-hook 'TeX-mode-hook
+          (<span class="keyword">lambda</span> ()
+            (add-to-list 'TeX-expand-list
+                         '(<span class="string">"%(OutFullPath)"</span> 
+                           (<span class="keyword">lambda</span> nil
+                             (expand-file-name
+                              (TeX-active-master (TeX-output-extension) t)
+                              (TeX-master-directory))))))
+          )
+
+<span class="comment-delimiter">; </span><span class="comment">Add to custom-set-variables section</span>
+(custom-set-variables
+ '(TeX-output-view-style
+   '((<span class="string">"^pdf$"</span> <span class="string">"."</span> <span class="string">"\"path/to/AcroRd32.exe\" \"%(OutFullPath)\""</span>))))
+
+</pre>
+<!--#include file="ssi/footer.ssi"-->
+    </div>
+  </body>
+</html>

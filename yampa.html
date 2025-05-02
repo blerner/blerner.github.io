@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+<!--#include file="ssi/head.ssi"-->
+    <meta name="keywords" content="yampa, haskell" />
+  </head>
+
+  <body>
+    <!--#set var="page" value="academic"-->
+    <!--#set var="subpage" value="papers"-->
+    <!--#include file="ssi/body.ssi"-->
+    <h2>Arrow Laws and Efficiency in Yampa</h2>
+    <p class="authorsLine">Benjamin Lerner, Paul Hudak</p>
+
+
+    <h3>Papers and Downloads</h3> 
+    <ul>
+      <li> <a href="papers/yampa_proposal.pdf">Project
+          Proposal</a> (pdf format) <br/> The initial proposal for
+        this paper assumed that all the arrow laws would be
+        straightforwardly provable, and therefore made no
+        consideration of the possibility of efficiency or
+        optimizations based on the laws.
+      </li>
+      <li> <a href="papers/yampa_finalpaper.pdf">Final
+          Paper</a> (pdf format) <br/> In the course of proving
+        the various arrow laws, we found that two of them in
+        fact do not hold as strict equalities, and therefore
+        some consideration is given to how this disparaty can be
+        leveraged into possible optimizations.
+      </li>
+    </ul>
+
+    <h3>Abstract</h3>
+    <p>
+      Yampa is a functional reactive language developed for
+      the specific domain of robotic control.  By combining
+      both discrete events and time-varying signals, it
+      incorporates the main types of actions and stimuli a
+      robot likely encounters.  To accomplish this, signals
+      and events are represented by a signal function class,
+      which is defined and implemented to be an instance of
+      the Arrow class, which defines the operators associated
+      with that abstraction.
+    </p>
+    <p>
+      The choice of an arrow as the underlying representation
+      yields two benefits at the programmer's level.  First,
+      because of how the operators are defined, arrows do not
+      suffer from the same space-leaks that prior
+      implementations of Yampa did.  Second, the patterns in
+      which the operators combine arrows are intuitively
+      similar to those found in circuit diagrams, and hence
+      the correspondence between circuit programming of robots
+      and arrow programming in Yampa is easier to appreciate.
+    </p>
+    <p>
+      We formally prove that the type SF (the basic signal
+      function class used in Yampa), defined in <a
+                                                   class="ignore" href="yampa.html#ref2">[2]</a> and implemented in
+      <a class="ignore" href="yampa.html#ref3">[3]</a>, satisfies the
+      arrow laws as defined in <a class="ignore"
+                                  href="yampa.html#ref5">[5]</a>, for the purposes of showing that
+      Yampa, which is built around the properties of this
+      class, in fact is sound.  Two of the nine laws are not
+      satisfied in terms of strict equality; an evaluation
+      function is defined under which those two laws do hold.
+      As the two expressions involved in each law are not the
+      same, some discussion is given as to which expression is
+      more efficient, and its potential as an optimization for
+      Yampa programs.
+    </p>
+    <h3>References</h3>
+    <dl class="bibliography">
+      <dt><a name="ref1"><span><a class="ignore" href="yampa.html#ref1">[1]</a></span></a></dt>
+      <dd>Paul Hudak, <i>The Haskell School of Expression;
+          Learning Functional Programming Through Multimedia</i>,
+        Cambridge University Press, 2000.
+      </dd>
+      <dt><a name="ref2"><span><a class="ignore" href="yampa.html#ref2">[2]</a></span></a></dt>
+      <dd>Paul Hudak, Antony Courtney, Henrik Nilsson, and
+        John Peterson, <i>Arrows, Robots, and Functional
+          Reactive Programming</i>, Summer School on Advanced
+        Functional Programming 2002, Oxford University,
+        Lecture Notes in Computer Science, Springer-Verlag,
+        2003.
+      </dd>
+      <dt><a name="ref3"><span><a class="ignore" href="yampa.html#ref3">[3]</a></span></a></dt>
+      <dd> ________, <i>Yampa 0.9.1 Source Code</i>, 
+        <a class="ignore" href="http://haskell.org/yampa/">http://haskell.org/yampa/</a>, 2003.
+      </dd>
+      <dt><a name="ref4"><span><a class="ignore" href="yampa.html#ref4">[4]</a></span></a></dt>
+      <dd>John Hughes, <i>Generalising Monads to Arrows</i>, Science
+        of Computer Programming 37 (2000), no. 1&mdash;3, 67&mdash;111.
+      </dd>
+      <dt><a name="ref5"><span><a class="ignore" href="yampa.html#ref5">[5]</a></span></a></dt>
+      <dd>Ross Paterson, <i>A New Notation for Arrows</i>,
+        International Conference on Functional Programming, 
+        ACM Press, September 2001, pp. 229&mdash;240.
+      </dd>
+      <dt><a name="ref6"><span><a class="ignore" href="yampa.html#ref6">[6]</a></span></a></dt>
+      <dd>________, <i>Arrows and Computation</i>, 
+        The Fun of Programming (Jeremy Gibbons and Oege de
+        Moor, eds.), Palgrave, 2003, pp. 201&mdash;222. 
+      </dd>
+    </dl>
+    <!--#include file="ssi/footer.ssi"-->
+  </div>
+  </body>
+</html>
