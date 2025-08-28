@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <link rel="icon" type="image/png" href="https://www.khoury.northeastern.edu/wp-content/uploads/2020/08/cropped-favicon-512x512-1-32x32.png">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Ben, Lerner, Benjamin, Computer,
+        Science, University, Washington, Ph.D., Programming,
+        Languages, UW, CSE, Brown" />
+    <meta name="author" content="Benjamin Lerner" />
+    <base href="{{ site.baseurl }}" />
+    <title>Genetec &raquo; Benjamin Lerner</title>
+    <script type="text/javascript" src="scripts/jsUtilities.js"></script>
+    <script type="text/javascript" src="scripts/footnoteLinks.js"></script>
+    <script type="text/javascript" src="scripts/popups.js"></script>
+    <script type="text/javascript">
+          // <![CDATA[
+    window.onload = function() {
+      footnoteLinks('content','content');
+      doPopups();
+      setEmailLink();
+    }
+    function setEmailLink() {
+      var metas = document.getElementsByTagName('meta');
+      for (var i = 0; i < metas.length; i++) {
+        if (metas[i].getAttribute("name") == "author") {
+          var names = metas[i].getAttribute("content").toLowerCase().split(" ");
+          var emailAddr = names[0].charAt(0) + names[1] + "@";
+          var email = document.getElementsByClassName("email")[0];
+          var emailText = email.textContent;
+          var a = document.createElement("a");
+          a.textContent = email.textContent;
+          a.href = "mailto:" + metas[i].getAttribute("content") + " <" + emailAddr + email.textContent.substr(email.textContent.indexOf("}") + 2) + ">";
+          var contact = document.getElementById("addresses");
+          contact.addEventListener("mouseenter", function(event) {
+            email.textContent = "";
+            email.appendChild(a);
+            event.stopPropagation();
+          });
+          contact.addEventListener("mouseleave", function(event) {
+            email.innerHTML = emailText;
+            event.stopPropagation();
+          });
+        }
+      }
+    }
+          // ]]>
+    </script>
+    <link title="styles" href="css/styles.css" type="text/css"
+        rel="stylesheet" media="screen" /> 
+    <link title="styles" href="css/printstyles.css" type="text/css"
+        rel="stylesheet" media="print" /> 
+    <!--[if IE 7]><style>#footer{margin: 0 -16px 0 -15px;}</style><![endif]-->
+  </head>
+
+  <body>
+<!--#set var="page" value="home"-->
+    <noscript></noscript>
+    <div class="vcard" id="pageContent">
+      <h1 class="fn">Benjamin Lerner</h1>
+      <div id="contentAndNav">
+        <div id="preNavNav">
+          <div id="nav">
+            <b class="rc tl"><i class="rc"></i></b>
+            <div class="menu">
+              <ul>
+                <li class="first {% if page.page == 'home' %}current{% endif %}"><a class="url" href="index.html">home</a></li><!--
+             --><li class="{% if page.page == 'academic' %}current{% endif %}"><a href="academic.html">academic</a></li>
+              </ul>
+            </div>
+{% if page.page contains 'academic' %}
+            <ul class="submenu">
+              <li class="first {% if page.subpage == 'teaching' %}current{% endif %}"><a href="teaching.html">teaching</a></li><!--
+           --><li class="{% if page.subpage == 'research' %}current{% endif %}"><a href="academic.html">research</a></li><!--
+           --><li class="{% if page.subpage == 'papers' %}current{% endif %}"><a href="papers.html">papers</a></li>
+            </ul>
+{% elsif page.page contains 'personal' %}
+            <ul class="submenu">
+              <li class="first {% if page.subpage == 'genealogy' %}current{% endif %}"><a href="genealogy.html">genealogy</a></li><!--
+           --><li class="{% if page.subpage == 'useful' %}current{% endif %}"><a href="useful.html">useful</a></li>
+            </ul>
+{% if page.subsubpage and page.subsubpage != '' %}
+            <ul class="submenu">
+              <li class="first {% if page.subsubpage == 'bootloader' %}current{% endif %}"><a href="bootloader.html">bootloader</a></li><!--
+           --><li class="{% if page.subsubpage == 'latex' %}current{% endif %}"><a href="latex.html">PDF+LaTeX+Windows</a></li>
+            </ul>
+{% endif %}
+{% endif %}
+            <b class="rc br"><i class="rc"></i></b>
+          </div>
+          <div style="clear: both;"></div>
+        </div>
+        <div id="postNav"></div>
+        <div id="content">
+
+{{ content }}
+
+        </div>
+      </div>
+      <div id="footer">
+        <p>Validate: 
+          <a href="http://validator.w3.org/check/referer" 
+            class="popup"
+            title="Check the validity of this site&#8217;s XHTML"><img
+              src="images/valid_xhtml_80x15.png" alt="xhtml" /></a>
+          <a href="http://jigsaw.w3.org/css-validator/check/referer" 
+            class="popup"
+            title="Check the validity of this site&#8217;s CSS"><img 
+              src="images/valid_css_80x15.png" alt="css" /></a>
+        </p>
+        <p id="firefox">Site best viewed with <a class="popup"
+            href="http://getfirefox.com"><img alt="Firefox"
+              src="images/get_firefox_80x15.png" /></a></p>
+      </div>
+    </div>
+  </body>
+</html>
