@@ -12,3 +12,8 @@ papl/
 plagiarism/
 pyret/
 scripts/
+_site
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+vendor

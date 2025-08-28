@@ -1,0 +1,46 @@
+---
+layout: index
+title: ""
+page: academic
+subpage: papers
+---
+          <div id="interests">
+            <h2>Supporting Dynamic, Third-Party Code Customizations in JavaScript Using Aspects</h2>
+            <p class="copyrightNotice"><a class="ignore" href="copyright.html"
+                title="Copyright notice">copyright notice</a></p>
+            <p class="authorsLine">Benjamin Lerner, Herman Venter and Dan Grossman</p>
+
+            <h3>Abstract</h3>
+            <p>Web sites and web browsers have recently evolved into platforms on
+              top of which entire applications are delivered dynamically, mostly as
+              JavaScript source code. This delivery format has sparked extremely
+              enthusiastic efforts to customize both individual web sites and
+              entire browsers in ways the original authors never expected or
+              accommodated. Such customizations take the form of yet more
+              script dynamically injected into the application, and the current
+              idioms to do so exploit arcane JavaScript features and are extremely
+              brittle. In this work, we accept the popularity of extensions and seek
+              better linguistic mechanisms to support them.
+            </p>
+            <p>We suggest adding to JavaScript aspect-oriented features that
+              allow straightforward and declarative ways for customization code
+              to modify the targeted application. Compared to most prior aspect-related
+              research, our work has a different motivation and a very
+              different target programming environment, both of which lead to
+              novel design and implementation techniques. In particular, our
+              aspect weaving is entirely integrated into a dynamic JIT compiler,
+              which lets us properly handle advice to first-class functions in the
+              presence of arbitrary aliasing, without resorting to whole-program
+              code transformations. Our prototype demonstrates that an aspect-oriented
+              approach to web-application customization is often more
+              efficient than current idioms while simplifying the entire process.
+            </p>
+            <h3>Links</h3>
+            <dl class="paperLinks">
+              <!-- <dt>Paper:</dt><dd><a href="papers/oopsla2010.pdf">pdf</a></dd> -->
+	      <dt>Paper (ACM DL):</dt><dd><a href="https://dl.acm.org/doi/10.1145/1869459.1869490?cid=81318490369">pdf</a></dd>
+              <dt>Presentation:</dt><dd><a href="papers/oopsla2010.pptx">pptx</a></dd>
+	      <dt>Project page:</dt><dd><a href="browser-extensions.html">available here</a></dd>
+            </dl>
+
+          </div>

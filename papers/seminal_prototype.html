@@ -1,0 +1,43 @@
+---
+layout: index
+title: ""
+page: academic
+subpage: research
+---
+          <div id="interests">
+            <h2>SEMINAL: Prototype implementation</h2>
+            <h3>Installation</h3>
+            <p>
+              Our prototype implementation is available for download
+              as a patch on the sources of ocaml-3.08.4.  It is made
+              available under the same <a
+              href="http://caml.inria.fr/ocaml/license.fr.html">license</a>
+              as Objective Caml itself.  To install:
+            </p>
+            <ol>
+              <li>Make sure you have a version of ocaml installed
+                already, to bootstrap the compilation.</li>
+              <li>Download <a href="http://caml.inria.fr/pub/distrib/ocaml-3.08/ocaml-3.08.4.tar.gz">the ocamlc-3.08.4 sources</a>,
+                and unzip to a directory of your choosing.</li>
+              <li>Download <a href="files/seminal_v0.0.3.patch">the
+                  Seminal patch</a>.  To apply it, change into the top
+                directory of the unzipped Ocaml sources, and run
+                <code>patch -p1 &lt; path/to/seminal.patch</code></li>
+              <li>As usual, 
+                <code>./configure ; make world.opt ; make
+                  install</code></li>
+              <li>This release provides drop-in replacements for
+                <code>ocamlc</code> and <code>ocamlc.opt</code>.  To
+                see the Seminal suggestions, use the
+                <code>-seminal</code> command-line flag.</li>
+            </ol>
+            <h3>Feedback and Support</h3>
+            <p>If you're using our prototype, please email us to let
+              us know how you're using it (just checking it out, using
+              it yourself, or for a class, or whatever) and what you
+              think of it.</p>
+            <p>Seminal is not currently under active development, but
+              if there is sufficient interest we will be maintaining
+              it and fixing particularly problematic bugs.  We'd
+              appreciate your feedback.</p>
+          </div>

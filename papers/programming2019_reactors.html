@@ -1,0 +1,50 @@
+---
+layout: index
+title: ""
+page: academic
+subpage: papers
+---
+          <div id="interests">
+            <h2>Event Loops as First-Class Values: A Case Study
+                    in Pedagogic Language Design</h2>
+            <p class="copyrightNotice"><a class="ignore" href="copyright.html"
+                title="Copyright notice">copyright notice</a></p>
+            <p class="authorsLine">Joe Gibbs Politz, Benjamin
+                S. Lerner, Sorawee Porncharoenwase and Shriram Krishnamurthi</p>
+
+            <h3>Abstract</h3>
+	    <p>The <i>World model</i> is an existing functional
+	      input-output mechanism for event-driven programming. It
+	      is used in numerous popular textbooks and curricular
+	      settings.</p>
+
+            <p>The World model conflates two different tasks---the definition of
+              an event processor and its execution---into one. This conflation
+              imposes a significant (even unacceptable) burden on student users
+              in several educational settings where we have tried to use it,
+              e.g., for teaching physics.</p>
+
+            <p>While it was tempting to pile on features to address these
+              issues, we instead used the Scheme language design dictum of
+              removing weaknesses that made them seem necessary. By separating
+              the two tasks above, we arrived at a slightly different
+              primitive, the <i>reactor</i>, as our basis. This only defines the event
+              processor, and a variety of execution operators dictate how it
+              runs.</p>
+
+            <p>The new design enables programmatic control over event-driven
+              programs. This simplifies reflecting on program behavior, and
+              eliminates many unnecessary curricular dependencies imposed by
+              the old design. This work has been implemented in the Pyret
+              programming language. The separation of concerns has enabled new
+              curricula, such as the Bootstrap:Physics curriculum, to take
+              flight. Thousands of students use this new mechanism every
+              year. We believe that reducing impedance mismatches improves
+              their educational experience.</p>
+            <h3>Links</h3>
+            <dl class="paperLinks">
+		<dt>Paper (DOI):</dt><dd><a href="https://doi.org/10.22152/programming-journal.org/2019/3/11">pdf</a></dd> 
+		<dt>Citation:</dt><dd><a href="files/citations.html#programming2019_reactors">BibTeX</a></dd>
+            </dl>
+
+          </div>
