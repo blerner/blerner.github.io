@@ -10,9 +10,9 @@
     <meta name="author" content="Benjamin Lerner" >
     <base href="{{ site.baseurl }}" >
     <title>Genetec &raquo; Benjamin Lerner</title>
-    <script src="scripts/jsUtilities.js"></script>
-    <script src="scripts/footnoteLinks.js"></script>
-    <script src="scripts/popups.js"></script>
+    <script src="{{ 'scripts/jsUtilities.js' | relative_url }}"></script>
+    <script src="{{ 'scripts/footnoteLinks.js' | relative_url }}"></script>
+    <script src="{{ 'scripts/popups.js' | relative_url }}"></script>
     <script>
           // <![CDATA[
     window.onload = function() {
@@ -46,9 +46,9 @@
     }
           // ]]>
     </script>
-    <link title="styles" href="css/styles.css" type="text/css"
+    <link title="styles" href="{{ 'css/styles.css' | relative_url }}" type="text/css"
         rel="stylesheet" media="screen" > 
-    <link title="styles" href="css/printstyles.css" type="text/css"
+    <link title="styles" href="{{ 'css/printstyles.css' | relative_url }}" type="text/css"
         rel="stylesheet" media="print" > 
     <!--[if IE 7]><style>#footer{margin: 0 -16px 0 -15px;}</style><![endif]-->
   </head>
