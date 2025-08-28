@@ -1,0 +1,199 @@
+/* Standard blues:
+   336798 - page background
+   5c85ad - header background
+   85a4c2
+   adc2d6
+   d6e0eb
+*/
+/* Standard oranges:
+   8f472e - headings
+   a2633e - new links
+   b37f4d - visited links
+   c69e74
+   d9ba9b
+   ecd8c1 - header color
+   fff5e8 - content background
+*/
+/* Standard beiges:
+   b2a96a - lines and borders
+*/
+/************* Overall page settings *************************/
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+#pageContent {
+  margin: 0px;
+  padding: 0px;
+  text-align: left;
+  font: 10pt/12.5pt Verdana, Arial, Helvetica, sans-serif;
+  display: inline;
+}
+
+abbr, acronym, .help { 
+  border-bottom: 1px dotted #444;
+}
+
+abbr:after, acronym:after, .help:after { 
+  content: " (" attr(title) ") "
+}
+
+/******************** Rounder corners *************************/
+b.rc { 
+  display: none
+}
+
+/********************** Header styles *************************/
+#header { 
+  padding: 0;
+  position: relative;
+  min-height: 28px;
+}
+
+#header h1 {
+  font: 26pt/26pt Georgia, "Times New Roman", Time, serif;
+  font-weight: normal;
+  font-variant: small-caps;
+  color: #8f472e;
+  background: inherit;
+  margin: 0 auto;
+  padding: .2em 0 .2em 0;
+}
+
+/*********************** Nav styles ***************************/
+#nav { 
+  display: none
+}
+
+/********************** Content styles ************************/
+#contentAndNav {
+  position: relative;
+  display: inline;
+}
+
+#content { 
+
+}
+
+#content a {
+  text-decoration: none;
+  font-style: italic;
+  color: #a2633e;
+  background: inherit;
+}
+
+#content sup.printOnly { 
+  text-decoration: none;
+  font-style: italic;
+  font-weight: normal;
+  color: black;
+  background: inherit;
+}
+
+#content img {
+  border: 1px solid #b2a69a;
+  position: relative;
+  float: left;
+  margin: 0px 15px 15px 0;
+  display: inline;
+}
+
+#content h2 {
+  margin: 0.2em 0 .4em 0;
+  padding: 0;
+  clear: both;
+  position: relative;
+  font: 16pt/18pt  Georgia, "Times New Roman", Time, serif;
+  color: #8f472e;
+  background: inherit;
+  border-bottom: 1px solid #b2a69a;
+}
+
+#content p {
+  margin: 0 0 .8em 0;
+}
+
+#content ul {
+  list-style: disc;
+}
+
+#content ul li {
+  margin: 0 2em 0.2em 0;
+}
+
+#content table { 
+  font: 10pt/12.5pt Verdana, Arial, Helvetica, sans-serif;
+  margin: 0 2em 0.2em 0;
+}
+
+#content td { 
+  vertical-align: baseline;
+}
+
+#content tr.headerRow { 
+  display: none;
+}
+
+.paperLinks dt { 
+  display: inline;
+}
+.paperLinks dd { 
+  display: inline;
+  margin: 0 2em 0 1em
+}
+
+.copyrightNotice { display: none }
+
+#currentClasses dl {
+  margin: 0 2em 0.5em 3em;
+  line-height: 15pt;
+}
+#currentClasses dl dt {
+  display: inline-block;
+  font-weight: bold;
+}
+#currentClasses dl dd {
+  margin: -15pt 0 0 0;
+  padding-left: 7em;
+}
+
+dl.bibliography {
+  position: relative;
+  margin: 0 2em 0.5em 0em;
+  line-height: 15pt;
+}
+dl.bibliography dt {
+  position: absolute;
+  font-weight: bold;
+}
+dl.bibliography dd {
+  margin: -15pt 0 0 0;
+  padding-left: 4em;
+}
+
+
+#contactInfo {  
+  clear: both !important;
+}
+
+#contactInfo dl {
+  position: relative;
+  line-height: 1.5em;
+}
+#contactInfo dl dt {
+  position: absolute;
+  font-weight: bold;
+}
+#contactInfo dl dd {
+  margin: 0;
+  padding-left: 11em;
+}
+
+
+
+
+/************************ Footer styles ***************************/
+#footer {
+  display: none;
+}

@@ -1,0 +1,447 @@
+/* Standard blues:
+   336798 - page background
+   5c85ad - header background
+   85a4c2
+   adc2d6
+   d6e0eb
+*/
+/* Standard oranges:
+   8f472e - headings
+   a2633e - new links
+   b37f4d - visited links
+   c69e74
+   d9ba9b
+   ecd8c1 - header color
+   fff5e8 - content background
+*/
+/* Standard beiges:
+   b2a96a - lines and borders
+   e2d6ca - new link background
+   f1e6d9 - visited link background
+*/
+/************* Overall page settings *************************/
+body {
+  margin: 0 0 0 0;
+  padding: .5em;
+  background: #336798;
+  color: inherit;
+  text-align: center;
+}
+
+#pageContent { 
+  width: 645px; 
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  font: 10pt/12.5pt Verdana, Arial, Helvetica, sans-serif;
+}
+
+abbr, acronym, .help { 
+  border-bottom: 1px dotted #444;
+  cursor: help;
+}
+
+.waspAcronym { 
+  font-variant: small-caps !important;
+}
+
+.waspAcronym b { 
+  text-transform: uppercase;
+}
+
+.printOnly { 
+  display: none !important;
+} 
+
+
+/******************** Rounder corners *************************/
+b.rc { 
+  position: absolute;
+/*  height: 15px; 
+  width: 15px; */
+  margin: 0; 
+  padding: 0; 
+/*  line-height: 1px; 
+  font-size: 1px; */
+}
+
+b.br { 
+  bottom: -1px;
+  right: -1px;
+  background-position: bottom right !important;
+} 
+b.bl { 
+  bottom: -1px; 
+  left: -1px; 
+  background-position: bottom left !important;
+}
+b.tr { 
+  top: -1px; 
+  right: -1px; 
+  background-position: top right !important;
+}
+b.tl { 
+  top: -1px; 
+  left: -1px; 
+  background-position: top left !important;
+}
+
+/* IE Hack  \*/
+* html b.rc { display: none; }
+/* */
+
+
+/********************** Header styles *************************/
+#header { 
+  background: #5c85ad;  
+  color: inherit;
+  padding: 0;
+  clear: both;
+  position: relative;
+  min-height: 28px;
+/*  border-bottom: 1px solid #b2a69a; */
+}
+
+#header h1 {
+  font: 26pt/26pt Georgia, "Times New Roman", Time, serif;
+  font-weight: normal;
+  font-variant: small-caps;
+  color: #ecd8c1;
+  background-color: transparent;
+  margin: 0 auto;
+  padding: .2em 0 .2em .7em;
+}
+
+#header b.rc { 
+  background: url(../images/outerblue-corners.gif) no-repeat;
+  width: 20px !important;
+  height: 20px !important;
+}
+
+
+/*********************** Nav styles ***************************/
+#nav { 
+  float: right;
+  background: #5c85ad;
+  color: black;
+  margin-top: -1px;
+/*  margin-right: -1px; */
+  border-top: 1px solid #5c85ad;
+  border-right: 1px solid #5c85ad; 
+  border-left: 1px solid #b2a69a;
+  border-bottom: 1px solid #b2a69a;
+  min-height: 28px;
+  position: relative;
+}
+
+#nav b.rc {
+  background: url(../images/innercontent-corners.gif) no-repeat;
+}
+#nav b.tl {
+  left: -15px;
+  background-position: top right !important;
+}
+
+#nav b.br { 
+  background-position: top right !important;
+  bottom: -15px;
+  right: -2px; /* 2px because #nav is not moved 1px right */
+}
+
+#nav ul { 
+  margin: 0 1px;
+  padding: 0 1em 15px 1em;
+  display: block;
+  border: 0px solid red;
+  text-align: right;
+}
+
+#nav ul.submenu { 
+  margin: -10px 1px;
+  border: 0px solid green;
+  text-align: right;
+}
+
+#nav ul li { 
+  margin: 0;
+  padding: 0px 0.5em;
+  border-left: 1px solid #000;
+  list-style: none;
+  display: inline;
+  text-transform: lowercase;
+}
+
+#nav ul li.first { 
+  border-left: none;
+}
+
+#nav ul li.current { 
+  background: #ecd8c1;
+}
+
+#nav a {
+  text-decoration: none;
+  color: #ecd8c1;
+  background: inherit;
+}
+#nav a:hover {
+  background: #336798; 
+  color: #ecd8c1;
+  border-bottom: 1px solid #ecd8c1;
+}
+#nav li:hover { background: #336798; }
+#nav li.current a { 
+  background-color: transparent;
+  color: #336798;
+}
+#nav li.current a:hover { 
+  background: #ecd8c1;
+  color: #336798;
+  border-bottom: 0;
+}
+
+/********************** Content styles ************************/
+#contentAndNav {
+  border-top: 1px solid #b2a69a;
+  border-left: 1px solid #b2a69a;
+  border-right: 1px solid #5c85ad;
+  background-color: #fff5e8;
+  padding: 0px !important;
+/*  background-image: url('../images/background.jpg');
+  background-repeat: repeat-x; */
+  color: inherit;
+  position: relative;
+  clear: both;
+}
+/* IE Hack \*/
+* html div#contentAndNav { height: 1%; border-right: #b2a96a; }
+/* */
+
+#contentAndNav b.rc { 
+  background: url(../images/innercontent-corners.gif) no-repeat;
+  width: 15px;
+  height: 15px;
+}
+
+#contentAndNav #nav b.bl {
+  background: url(../images/outercontent-corners.gif) no-repeat;
+}
+
+#content { 
+  padding: 1em 15px;
+  clear: both;
+  border-right: 1px solid #b2a69a;
+  margin-right: -1px;
+}
+/* IE Hack \*/
+* html div#content { margin-right: 0px; }
+/* */
+
+#content a {
+  text-decoration: none;
+  color: #a2633e;
+  background: inherit;
+}
+#content a:visited {
+  text-decoration: none;
+  color: #b37f4d;
+  background: inherit;
+}
+#content a:hover {
+  background: #e2d6ca; 
+  color: #a2633e;
+  border-bottom: 1px solid #a2633e;
+}
+#content a:visited:hover { 
+  background: #f1e6d9;
+  color: #b37f4d;
+  border-bottom: 1px dotted #b37f4d;
+}
+#content a:hover abbr { 
+  border-bottom: 0px;
+}
+#content a:hover acronym { 
+  border-bottom: 0px;
+}
+#content a:hover .help { 
+  border-bottom: 0px;
+}
+
+
+
+#content img {
+  border: 1px solid #b2a69a;
+  position: relative;
+  float: left;
+  margin: 0px 15px 15px 0;
+  display: inline;
+}
+
+#content h2 {
+  margin: 0 0 .4em 0;
+  padding: 0;
+  clear: both;
+  position: relative;
+  font: 16pt/18pt  Georgia, "Times New Roman", Time, serif;
+  color: #8f472e;
+  border-bottom: 1px solid #b2a69a;
+}
+
+#content p {
+  margin: 0 0 .8em 0;
+}
+
+#content ul {
+  list-style: disc;
+}
+
+#content ul li {
+  margin: 0 2em 0.2em 0;
+}
+
+#content table { 
+  font: 10pt/12.5pt Verdana, Arial, Helvetica, sans-serif;
+  margin: 0 2em 0.2em 0;
+}
+
+#content table tr.headerRow { 
+  display: none;
+}
+
+#content td { 
+  vertical-align: baseline;
+}
+
+.paperLinks dt { 
+  display: inline;
+}
+.paperLinks dd { 
+  display: inline;
+  margin: 0 2em 0 1em
+}
+
+.copyrightNotice { 
+  display: inline;
+  float: right;
+}
+#content .submissionLine { 
+  margin: 0 0 0 0;
+}
+#content .authorsLine { 
+  margin: 0 0 0 0;
+}
+
+#content .copyrightNotice a {
+  text-decoration: none;
+  color: #d9ba9b;
+  background: inherit;
+}
+#content .copyrightNotice a:hover {
+  background-color: transparent;
+  border-bottom: 0px;
+}
+
+
+#currentClasses dl {
+  position: relative;
+  margin: 0 2em 0.5em 3em;
+  line-height: 1.5em;
+}
+#currentClasses dl dt {
+  position: absolute;
+  font-weight: bold;
+}
+#currentClasses dl dd {
+  margin: 0;
+  padding-left: 6.5em;
+}
+
+dl.bibliography {
+  position: relative;
+  margin: 0 2em 0.5em 0em;
+  line-height: 1.5em;
+}
+dl.bibliography dt {
+  position: absolute;
+  font-weight: bold;
+}
+dl.bibliography dd {
+  margin: 0;
+  padding-left: 4em;
+}
+
+
+#contactInfo dl {
+  position: relative;
+  line-height: 1.5em;
+}
+#contactInfo dl dt {
+  position: absolute;
+  font-weight: bold;
+}
+#contactInfo dl dd {
+  margin: 0;
+  padding-left: 11em;
+}
+
+
+
+
+/************************ Footer styles ***************************/
+#footer {
+  text-align: center;
+  margin: 0px auto;
+  font: 8pt/8pt Verdana, Arial, Helvetica, sans-serif;
+  color: #ecd8c1;
+  border-top: 1px solid #b2a69a;
+  background: #5c85ad; 
+  padding: 5px 0 5px 0;
+  min-height: 15px;
+  position: relative;
+}
+
+#footer b.rc { 
+  background: url(../images/outerblue-corners.gif) no-repeat;
+  width: 20px !important;
+  height: 20px !important;
+}
+
+#footer #contentCurves b.rc { 
+  background: url(../images/innercontent-corners.gif) no-repeat;
+  width: 15px !important;
+  height: 15px !important;
+}
+#footer #contentCurves b.br { 
+  top: -15px;
+  right: 0px;
+  background-position: bottom right;
+}
+#footer #contentCurves b.bl { 
+  top: -15px;
+  left: 0px;
+  background-position: bottom left;
+}
+
+#footer p { 
+  margin: 0px;
+}
+
+tml #footer { border: 1px solid red; }
+tml #contentAndNav { border: 1px solid green; }
+
+#footer p#firefox { display: none; }
+/* IE Hack \*/
+* html #footer p#firefox { 
+  display: block; 
+  margin-top: 3px;
+}
+/* */
+
+#footer a img { 
+  margin: 0px;
+  border: none;
+  width: 80px;
+  height: 15px;
+  position: relative;
+  vertical-align: middle;
+}

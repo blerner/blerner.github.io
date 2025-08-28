@@ -1,0 +1,864 @@
+
+
+/*
+Theme Name: NEU CIS Theme
+Theme URI: http://www.cs.washington.edu/homes/blerner/
+Description: WordPress Custom Theme for Benjamin Lerner initially created with the <a href="http://www.yvoschaap.com/wpthemegen/">WordPress Theme Generator</a>.
+Version: 11 Jul, 3:55
+Author: Benjamin Lerner
+Author URI: http://www.cs.washington.edu/homes/blerner/
+
+*/
+
+/********************** Header styles *************************/
+h1.fn { 
+  background: #615445;  
+  padding: 0;
+  clear: both;
+  position: relative;
+  min-height: 28px;
+  font: 26pt/26pt Georgia, "Times New Roman", Time, serif;
+  font-weight: normal;
+  font-variant: small-caps;
+  color: #cdc3ba;
+  margin: 0 auto;
+  padding: .2em 0 .2em .7em;
+  border-radius: 20px 20px 0 0;
+}
+
+div#about h4:first-of-type { margin-top: 0px; }
+
+/********************** Footer styles *************************/
+#contentAndNav {
+  border-radius: 15px 0 15px 15px;
+}
+#preNavNav {
+    background: #fbf3ec;
+    border-radius: 15px 0 0 0;
+    border-top: 2px solid #cc0000;
+    border-left: 2px solid #cc0000;
+}
+#content {
+  border-radius: 0 15px 15px 15px;
+}
+#footer {
+  text-align: center;
+  margin: 0px auto;
+  font: 8pt/8pt Verdana, Arial, Helvetica, sans-serif;
+  color: #cdc3ba;
+  background: #615445; 
+  padding: 5px 0 5px 0;
+  min-height: 15px;
+  position: relative;
+  border-radius: 0 0 15px 15px;
+}
+
+#footer p { 
+  margin: 0px;
+}
+
+tml #footer { border: 1px solid red; }
+tml #contentAndNav { border: 1px solid green; }
+
+#footer p#firefox { display: none; }
+/* IE Hack \*/
+* html #footer p#firefox { 
+  display: block; 
+  margin-top: 3px;
+}
+/* */
+
+#footer a img { 
+  margin: 0px;
+  border: none;
+  width: 80px;
+  height: 15px;
+  position: relative;
+  vertical-align: middle;
+}
+
+
+/******************** Rounder corners *************************/
+.rc { 
+  position: absolute;
+  margin: 0; 
+  padding: 0; 
+}
+
+b.br { 
+  bottom: 0px;
+  right: 0px;
+  background-position: bottom right !important;
+} 
+b.bl { 
+  bottom: 0px; 
+  left: 0px; 
+  background-position: bottom left !important;
+}
+b.tr { 
+  top: 0px; 
+  right: 0px; 
+  background-position: top right !important;
+}
+b.tl { 
+  top: 0px; 
+  left: 0px; 
+  background-position: top left !important;
+}
+
+/* IE Hack  \*/
+* html b.rc { display: none; }
+/* */
+
+/************* Overall page settings *************************/
+body {
+  margin: 0 0 0 0;
+  padding-top: .5em;
+  padding-bottom: .5em;
+  background: #312a23;
+  color: inherit;
+  text-align: center;
+}
+
+#pageContent { 
+  width: 645px;  /* Change to 845 */
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  font: 10pt/12.5pt Verdana, Arial, Helvetica, sans-serif;
+  border-radius: 20pt 20pt 15pt 15pt;
+  background-color: #615445;
+  border: .5em solid #312a23;
+}
+
+abbr, acronym, .help { 
+  border-bottom: 1px dotted #444444;
+  cursor: help;
+}
+
+.waspAcronym { 
+  font-variant: small-caps !important;
+}
+
+.waspAcronym b { 
+  text-transform: uppercase;
+}
+
+.printOnly { 
+  display: none !important;
+} 
+
+
+
+
+/*********************** Nav styles ***************************/
+#nav { 
+  float: right;
+  background: #615445;
+  color: black;
+  margin-top: -2px;
+  border-top: 1px solid #615445;
+  border-left: 2px solid #cc0000;
+  border-bottom: 2px solid #cc0000;
+  min-height: 28px;
+  position: relative;
+  border-radius: 0 0 0 15px;
+}
+
+#nav .tl {
+  margin-left: -17px; /* 15px + 2px border */
+  margin-top: -1px;
+  height: 15px;
+  width: 15px;
+  background:#615445;
+  border-right: 2px solid #615445;
+}
+#nav .tl > * {
+    width: 15px;
+    height: 15px;
+  background: #fbf3ec;
+  border-radius: 0 15px 0 0;
+  border-top: 2px solid #cc0000;
+  border-right: 2px solid #cc0000;
+}
+
+#nav .br {
+  margin-bottom: -15px;
+  margin-right: 0px;
+  height: 15px;
+  width: 15px;
+  background:#615445;
+  border-top: 2px solid #615445;
+  border-right: 2px solid #615445;
+}
+#nav .br > * {
+    width: 15px;
+    height: 15px;
+  background: #fbf3ec;
+  border-radius: 0 15px 0 0;
+  border-top: 2px solid #cc0000;
+  border-right: 2px solid #cc0000;
+}
+
+#nav ul { 
+  margin: 0 0 10px 10px;
+  padding: 0 1em;
+  display: block;
+  border: 0px solid red;
+  text-align: right;
+}
+
+#nav ul.submenu { 
+  margin: -5px 1px 10px 1px;
+  border: 0px solid green;
+  text-align: right;
+}
+
+#nav ul li { 
+  margin: 0;
+  padding: 0px 0.5em;
+  list-style: none;
+  display: inline;
+  text-transform: lowercase;
+}
+
+#nav ul li.first { 
+  border-left: none !important;
+}
+
+
+#nav ul li ul {
+    display: none;
+}
+
+#nav ul li { 
+  border-left: 1px solid #000000;
+}
+
+#nav ul li.current { 
+  background: #cdc3ba;
+}
+
+#nav a {
+  text-decoration: none;
+  color: #cdc3ba;
+  background: inherit;
+}
+#nav a:hover {
+  background: #312a23; 
+  color: #cdc3ba;
+  border-bottom: 1px solid #cdc3ba;
+}
+#nav li:hover { background: #312a23; }
+#nav li.current a { 
+  background-color: transparent;
+  color: #312a23;
+}
+#nav li.current a:hover { 
+  background: #cdc3ba;
+  color: #312a23;
+  border-bottom: 0;
+}
+
+
+.navigation {
+	display: block;
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	color: #615445;
+}
+
+.navigation a:link, .navigation a:hover, .navigation a:visited{
+	color: #615445;
+}
+
+.alignright {
+	float: right;
+}
+
+.alignleft {
+	float: left
+}
+
+/********************** Content styles ************************/
+#contentAndNav {
+  /* border-top: 1px solid #cc0000; 
+  border-left: 1px solid #cc0000; 
+  border-right: 1px solid #615445; */
+  /* background-color: #fbf3ec; */
+  background-color: #615445;
+  padding: 0px !important;
+/*  background-image: url('images/background.jpg');
+  background-repeat: repeat-x; */
+  color: inherit;
+  position: relative;
+  clear: both;
+}
+/* IE Hack \*/
+* html div#contentAndNav { height: 1%; border-right: #cc0000; }
+/* */
+
+#contentAndNav .rc { 
+/*  background: url(images/innercontent-corners.gif) no-repeat; */
+  width: 15px;
+  height: 15px;
+}
+
+#contentAndNav #nav b.bl {
+    display: none;
+}
+
+#postNav {
+  clear: both;
+}
+#secondary {
+    width: 170px; /* 200 px - 2*15px padding */
+/*    min-width: 170px; uncomment for debugging
+    min-height: 150px; */
+    margin-bottom: 1em;
+    margin-left: 15px;
+    float: right;
+    background: green;
+    vertical-align: top;
+}
+#yui-main {
+    width: 611px; /* 645 page width - 2 * 15px padding - 2 * 2px border */
+    display: inline-block;
+}
+#yui-main > div {
+    margin-right: -17px;
+    padding-right: 15px;
+    border-right: 2px solid #cc0000;
+}
+#content { 
+    background: #fbf3ec;
+  padding: 1em 15px;
+  border-right: 2px solid #cc0000;
+  border-left: 2px solid #cc0000;
+  border-bottom: 2px solid #cc0000;
+}
+/* IE Hack \*/
+* html div#content { margin-right: 0px; }
+/* */
+
+.metadata { clear: both; }
+
+#content pre {
+    white-space: pre-wrap; /* css-3 */
+}
+
+#content a {
+  text-decoration: none;
+  color: #a2644c;
+  background-color: inherit;
+}
+
+#content a[href^="https://dl.acm.org"], #content a[href^="http://dl.acm.org"] {
+  background: transparent url(../images/acm_dl_icon.png) center right no-repeat;
+  padding-right: 18px;
+}
+
+#content a[href$=".pdf"] {
+  background: transparent url(../images/pdf_icon.png) center right no-repeat;
+  padding-right: 18px;
+}
+
+#content a[href$=".ppt"] {
+  background: transparent url(../images/ppt_icon.gif) center right no-repeat;
+  padding-right: 18px;
+}
+
+#content a[href$=".pptx"] {
+  background: transparent url(../images/pptx_icon.png) center right no-repeat;
+  padding-right: 18px;
+}
+
+#content a[href^="files/citations.html"] {
+  background: transparent url(../images/bibtex_icon.gif) center right no-repeat;
+  padding-right: 18px;
+}
+
+#content a:visited {
+  text-decoration: none;
+  color: #b4816a;
+  background-color: inherit;
+}
+#content a:hover {
+  background-color: #e2d6ca; /* bb1f32 */
+  color: #a2644c;
+  border-bottom: 1px solid #a2644c;
+}
+#content a:visited:hover { 
+  background-color: #e2d6ca; /* c41e3a */
+  color: #b4816a;
+  border-bottom: 1px dotted #b4816a;
+}
+#content a:hover abbr { 
+  border-bottom: 0px;
+}
+#content a:hover acronym { 
+  border-bottom: 0px;
+}
+#content a:hover .help { 
+  border-bottom: 0px;
+}
+
+
+
+#content img {
+  border: 1px solid #cc0000;
+  position: relative;
+  float: left;
+  margin: 0px 15px 15px 0;
+  display: inline;
+}
+
+#content h2 {
+  margin: 0 0 .4em 0;
+  padding: 0;
+  clear: both;
+  position: relative;
+  font: 16pt/18.5pt  Georgia, "Times New Roman", Time, serif;
+  color: #8f472e;
+  border-bottom: 1px solid #cc0000;
+}
+
+#content p {
+  margin: 0 0 .8em 0;
+}
+
+#content ul {
+  list-style: disc;
+}
+
+#content ul li {
+  margin: 0 2em 0.2em 0;
+}
+
+#content table { 
+  font: 10pt/12.5pt Verdana, Arial, Helvetica, sans-serif;
+  margin: 0 2em 0.2em 0;
+}
+
+#content table tr.headerRow { 
+  display: none;
+}
+
+#content td { 
+  vertical-align: baseline;
+}
+
+.paperLinks dt { 
+  display: inline;
+}
+.paperLinks dd { 
+  display: inline;
+  margin: 0 2em 0 1em
+}
+
+/******************** Paper styles ********************/
+div.paper {
+   display: block;
+   clear: both;
+}
+
+div.paper .title {
+   font-weight: bold;
+}
+div.paper .venue:before {
+   content: " (";
+}
+div.paper .venue:after {
+   content: ")";
+}
+div.paper .authorsLine {
+   display: block;
+   padding-left: 2em;
+}
+div.paper .blurb {
+   display: none;
+}
+div.paper dl.paperLinks {
+   padding-left: 2em;
+}
+
+.copyrightNotice { 
+  display: inline;
+  float: right;
+}
+#content .submissionLine { 
+  margin: 0 0 0 0;
+}
+#content .authorsLine { 
+  margin: 0 0 0 0;
+}
+
+#content .copyrightNotice a {
+  text-decoration: none;
+  color: #d9ba98;
+  background: inherit;
+}
+#content .copyrightNotice a:hover {
+  background-color: transparent;
+  border-bottom: 0px;
+}
+
+
+#currentClasses dl {
+  position: relative;
+  margin: 0 2em 0.5em 3em;
+  line-height: 1.5em;
+}
+#currentClasses dl dt {
+  position: absolute;
+  font-weight: bold;
+}
+#currentClasses dl dd {
+  margin: 0;
+  padding-left: 6.5em;
+}
+
+dl.bibliography {
+  position: relative;
+  margin: 0 2em 0.5em 0em;
+  line-height: 1.5em;
+}
+dl.bibliography dt {
+  position: absolute;
+  font-weight: bold;
+}
+dl.bibliography dd {
+  margin: 0;
+  padding-left: 4em;
+}
+
+
+#contactInfo dl {
+  position: relative;
+  line-height: 1.5em;
+}
+#contactInfo dl dt {
+  position: absolute;
+  font-weight: bold;
+}
+#contactInfo dl dd {
+  margin: 0;
+  padding-left: 11em;
+}
+
+
+
+
+h2 .chronodata {
+    float: right;
+    text-align: right;
+    margin-left: 2em;
+    font: 10pt/20pt Verdana, Arial, Helvetica, sans-serif;
+    color: black;
+}
+
+.item {
+    margin-bottom: 1em;
+}
+
+
+
+/*
+
+body,td,th {
+	color: #000000;
+}
+
+
+
+a, a:link {
+	padding: 1px;
+	color: #a2644c;
+	text-decoration: underline;
+}
+
+a:hover {
+	color: #FFFFCC;
+	text-decoration: none;
+	;
+}
+
+h1 {
+	font-family: georgia;
+	font-weight: bold;
+	font-size: 190%;
+	padding-top: .1em;
+	padding-bottom: .5em;
+}
+
+
+h2 {
+	font-family: Arial;
+	font-weight: bold;
+	font-size: 150%;
+}
+
+h3 {
+	font-family: georgia;
+	font-size: 130%;
+}
+
+
+h4 {
+	font-size: 105%;
+}
+
+p {
+	font-size: 80%;
+	margin-bottom:1em;
+}
+
+strong, b {
+	font-weight: bold;
+}
+
+em, i {
+	font-style: italic;
+}
+
+code {
+	font: 1.1em 'Courier New', Courier, Fixed;
+}
+
+acronym, abbr
+{
+	font-size: 0.9em;
+	letter-spacing: .07em;
+}
+
+a img {
+	border: none;
+}
+
+
+#hd{
+	text-align: center;
+	padding-top: 24px;
+}
+#hd h1{
+	font-size: 290%;
+	color: #cdc3ba;
+
+}
+
+#hd h1 a{
+	text-decoration: none;
+	color: #cdc3ba;
+}
+
+h3 a:link, h3 a:hover, h3 a:visited{
+	color: #8f472e;
+}
+
+
+.item ul {
+	list-style-type: disc;
+	padding-left: 15px;
+	margin-left: 10px;
+	font-size: 80%;
+}
+
+
+.item ol{
+	list-style-type: decimal;
+	padding-left: 15px;
+	margin-left: 10px;
+	font-size: 80%;
+}
+
+
+
+input{
+	font-size: 80%;
+}
+
+
+.tags, .catagory {
+
+	display: block;
+
+}
+
+.commentlist p {
+	clear: both;
+	font-size: 95%;
+}
+
+
+cite{
+	font-size: 95%;
+}
+
+blockquote {
+	margin: 15px 30px 0 10px;
+	padding-left: 20px;
+	border-left: 5px solid #ddd;
+	}
+
+blockquote cite {
+	margin: 5px 0 0;
+	display: block;
+}
+
+.commentmetadata {
+	font-size: 80%;
+	float: right;
+
+}
+.commentlist {
+	margin-top: 5px;
+}
+.commentlist li {
+	padding: 2px;
+	border-top: 1px solid #cc0000;
+}
+
+.navigation {
+	display: block;
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	color: #615445;
+}
+
+.navigation a:link, .navigation a:hover, .navigation a:visited{
+	color: #615445;
+}
+
+.alignright {
+	float: right;
+}
+
+.alignleft {
+	float: left
+}
+
+
+#secondary, #third{
+	background-color: bgmenucolor;
+	background-image: url(/); 
+	background-repeat: repeat;
+	text-align:left;
+	padding: 0px;
+	border: 1px solid #cc0000;
+	SP_GRADIENT
+}
+
+#secondary h4, #third h4{
+	color: #859E6C;
+	font-family: Trebuchet MS, arial, sans-serif;
+	margin-top: 5px;
+	padding: 3px;
+
+}
+
+#secondary p, #third p{
+		padding: 3px;
+		font-size: 70%;
+}
+
+#searchform {
+	clear: both;
+	margin-bottom: 5px;
+	margin-left: 2px;
+	padding: 3px;
+}
+
+#third {
+	margin-left: 9px;
+}
+
+#menu {padding:0; border:0px solid #fff }
+#menu ul {list-style:none; margin:0; padding:0; font-size:85%; }
+#menu ul li { padding:0; margin:0; border-bottom:1px solid #FFFFFF; }
+#menu ul li a { display:block; padding:4px 4px 4px 10px; text-decoration:none; color: #000000; }
+#menu ul li a:hover { color:myheadttcolor; background: #0099DD; }
+
+
+li .categories, li .linkcat, li .pagenav {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+.yui-nav{
+	margin-bottom: -1px;
+}
+
+.yui-navset .yui-nav a:hover {
+	background-color: #0099DD;
+	color: #000000;
+}
+
+.yui-navset .yui-nav li a {
+    background-color: #fbf3ec;
+	background-image: url(/); 
+	background-repeat: repeat;
+	border-bottom: 0px;
+	color: #000000;
+	padding: .3em .7em .3em .7em;
+	text-decoration:none;
+	font-size: 85%;
+}
+
+
+
+#wp-calendar {
+	empty-cells: show;
+	font-size: 90%;
+	margin: 0;
+	width: 90%;
+	padding: 3px;
+}
+
+#wp-calendar #next a {
+	padding-right: 10px;
+	text-align: right;
+}
+
+#wp-calendar #prev a {
+	padding-left: 10px;
+	text-align: left;
+}
+
+#wp-calendar a {
+	display: block;
+	text-decoration: none;
+}
+
+
+#wp-calendar td {
+	color: #000000;
+	font-size: 70%;
+	letter-spacing: normal;
+	padding: 2px 0;
+	text-align: center;
+}
+
+
+#wp-calendar #today {
+	background: ;
+	color: #0099DD;
+}
+
+#wp-calendar th {
+	font-style: normal;
+	text-transform: capitalize;
+}
+*/
+#ft {
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	color: #615445;
+}
+
+#ft a:link, #ft a:hover, #ft a:visited{
+	color: #615445;
+}
